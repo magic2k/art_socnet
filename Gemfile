@@ -15,7 +15,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'faker'
-
+gem 'devise'
+gem 'omniauth-github'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
