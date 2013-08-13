@@ -1,6 +1,7 @@
 class Restaurant < ActiveRecord::Base
   belongs_to :user
   has_one :cuisine
+  has_one :restaurant_type
 
   validates :name, presence: true, uniqueness: true
   #validates :city, presence: true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130802224226) do
+ActiveRecord::Schema.define(version: 20130804195721) do
 
   create_table "cuisines", force: true do |t|
     t.integer  "restaurant_id"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20130802224226) do
     t.boolean  "vegan_menu"
     t.boolean  "food_court"
     t.boolean  "art_cafe"
-    t.boolean  "grand_cafe"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -103,7 +102,6 @@ ActiveRecord::Schema.define(version: 20130802224226) do
   create_table "users", force: true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "email"
     t.string   "avatar"
     t.string   "city"
     t.string   "country"
@@ -112,18 +110,30 @@ ActiveRecord::Schema.define(version: 20130802224226) do
     t.string   "vkontakte"
     t.string   "odkl"
     t.string   "twitter"
+    t.string   "usr_type"
     t.text     "languages"
-    t.boolean  "guest"
-    t.boolean  "restaurant"
-    t.boolean  "showman"
-    t.boolean  "admin",             default: false
-    t.boolean  "banned",            default: false
+    t.boolean  "admin",                  default: false
+    t.boolean  "banned",                 default: false
+    t.boolean  "completed",              default: false
     t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "unconfirmed_email", default: "f"
+    t.string   "unconfirmed_email",      default: "f"
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "authentication_token"
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

@@ -6,8 +6,13 @@
         <ul class="nav pull-right">
           <li><%= link_to "Главная", root_path %></li>
           <li><%= link_to "Помощь", help_path %></li>
-
-          <li><%= link_to "Войти", '#' %></li>
+        <% if user_signed_in? %>
+              <li><%= current_user.email %></li>
+              <li><%= link_to "Выйти", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+              <li><%= link_to "Войти", new_user_session_path %></li>
+              <li><%= link_to "Регистрация", signup_path %></li>
+        <% end %>
         </ul>
       </nav>
     </div>

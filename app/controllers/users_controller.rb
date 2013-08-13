@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :delete]
 
   def new
     @user = User.new
@@ -13,19 +14,33 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def edit
 
   end
+
+  def show
+    if params[:id].nil?
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
+  end
+
+  #def after_sign_out_path_for(resource_name)
+    #request.referrer
+  #  resirect_to :show
+  #end
 
   private
   def user_params
     params.require(:user)
       .permit(:firstname, :lastname,
-              :email, :bartender,
-              :emcee, :illusionist,
-              :dj, :guest,
-              :user_type, :city,
-              :country, :languages,
+              :email,
+              :guest,
+              :user_type,
+              :city,
+              :country,
+              :languages,
               :password, :password_confirmation,
               :unconfirmed_email)
   end

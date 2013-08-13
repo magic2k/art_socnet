@@ -1,2 +1,10 @@
 <%= provide(:title, 'Главная') %>
-<h1>Главная</h1>
+<% if user_signed_in? %>
+    current_user.email
+
+<% else %>
+    <h1>Главная</h1>
+
+    <%= link_to "Зарегистрируйтесь!", signup_path,
+                class: "btn btn-large btn-primary" %>
+<% end %>

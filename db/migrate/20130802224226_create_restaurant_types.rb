@@ -13,7 +13,7 @@ class CreateRestaurantTypes < ActiveRecord::Migration
       t.boolean :vegan_menu
       t.boolean :food_court
       t.boolean :art_cafe
-      t.boolean :grand_cafe
+      #t.boolean :grand_cafe
 
       t.timestamps
     end

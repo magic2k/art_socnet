@@ -1,15 +1,26 @@
 ArtSocnet::Application.routes.draw do
 
-  resources :users
+  devise_for :users, controllers: { registrations: "registrations" }
+  devise_scope :user do
+    get 'signup',                          to: 'registrations#new'
+  end
+  resources :users, only: [:index, :show, :edit]
 
   root "static_pages#home"
-  get '/help',         to: 'static_pages#help'
-  get '/contacts',     to: 'static_pages#contacts'
+  get '/help',                            to: 'static_pages#help'
+  get '/contacts',                        to: 'static_pages#contacts'
 
-  match 'signup',        to: 'users#new', via: [:get]
+  #namespace :after_signup do
+    get '/after_signup/step_2',           to: 'after_signup#step_2'
+    patch '/after_signup/step_2_update',  to: 'after_signup#step_2_update'
+    #match '/after_signup/step_2_update',  to: 'after_signup#step_2_update', via: [:patch, :put]
+    #get '/step_2_update',  to: 'after_signup#step_2_update'
+  #end
+
+  #match 'signup',        to: 'users#new', via: [:get]
 
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # Se how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

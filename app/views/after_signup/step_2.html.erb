@@ -1,0 +1,15 @@
+<h2>Тип аккаунта: </h2>
+<%= form_for(@user, url: after_signup_step_2_update_path) do |f| %>
+
+    <%= f.label 'Гость' %>
+    <%= f.radio_button 'usr_type', 'guest'  %>
+
+    <%= f.label 'Артист' %>
+    <%= f.radio_button 'usr_type', 'showman' %>
+
+    <%= f.label 'Ресторан' %>
+    <%= f.radio_button 'usr_type', 'restaurant' %>
+
+    <%= f.submit 'Далее' %>
+
+<% end %>
