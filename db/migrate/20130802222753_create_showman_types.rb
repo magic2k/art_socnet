@@ -1,6 +1,6 @@
-class CreateUserTypes < ActiveRecord::Migration
+class CreateShowmanTypes < ActiveRecord::Migration
   def change
-    create_table :user_types do |t|
+    create_table :showman_types do |t|
       t.integer :user_id
       t.boolean :emcee
       t.boolean :dj
@@ -11,6 +11,5 @@ class CreateUserTypes < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :user_types, :user_id, unique: true
   end
 end

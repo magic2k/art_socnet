@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   has_one :restaurant, dependent: :destroy
-  has_one :user_type,  dependent: :destroy
+  has_one :showman_type,  dependent: :destroy
 
   serialize :languages, Array
 #has_secure_password

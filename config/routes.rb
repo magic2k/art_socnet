@@ -10,12 +10,26 @@ ArtSocnet::Application.routes.draw do
   get '/help',                            to: 'static_pages#help'
   get '/contacts',                        to: 'static_pages#contacts'
 
-  #namespace :after_signup do
-    get '/after_signup/step_2',           to: 'after_signup#step_2'
-    patch '/after_signup/step_2_update',  to: 'after_signup#step_2_update'
+  #registration paths
+  ##namespace :after_signup do
+    get '/after_signup/step_2',                          to: 'after_signup#step_2'
+    get '/after_signup/step_guest',                      to: 'after_signup#step_guest'
+    get '/after_signup/step_showman',                    to: 'after_signup#step_showman'
+    get '/after_signup/step_restaurant',                 to: 'after_signup#step_restaurant'
+    get '/after_signup/step_restaurant_types',           to: 'after_signup#step_restaurant_types'
+    get '/after_signup/step_cuisines',                   to: 'after_signup#step_cuisines'
+    get '/after_signup/final_step',                      to: 'after_signup#final_step'
+    patch '/after_signup/step_2_update',                 to: 'after_signup#step_2_update'
+    patch '/after_signup/step_guest_update',             to: 'after_signup#step_guest_update'
+    match '/after_signup/step_showman_update',           to: 'after_signup#step_showman_update',          via:[:patch, :post]
+    match '/after_signup/step_restaurant_update',        to: 'after_signup#step_restaurant_update',       via:[:patch, :post]
+    match '/after_signup/step_restaurant_types_update',  to: 'after_signup#step_restaurant_types_update', via:[:patch, :post]
+    match '/after_signup/step_cuisines_update',          to: 'after_signup#step_cuisines_update',         via:[:patch, :post]
     #match '/after_signup/step_2_update',  to: 'after_signup#step_2_update', via: [:patch, :put]
     #get '/step_2_update',  to: 'after_signup#step_2_update'
   #end
+
+
 
   #match 'signup',        to: 'users#new', via: [:get]
 

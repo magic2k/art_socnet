@@ -1,1 +1,23 @@
-step showman
+<div class="row">
+  <div class="span6 offset3">
+
+    <%= form_for(@showman_type, url: after_signup_step_showman_update_path) do |f| %>
+        <%= f.label 'Ведущий' %>
+        <%= f.check_box 'emcee' %>
+
+        <%= f.label 'Ди-Джей' %>
+        <%= f.check_box 'dj' %>
+
+        <%= f.label 'Бармен' %>
+        <%= f.check_box 'bartender' %>
+
+        <%= f.label 'Фокусник' %>
+        <%= f.check_box 'illusionist' %>
+
+        <%= f.label 'Тамада' %>
+        <%= f.check_box 'tamada' %>
+
+        <%= f.submit %>
+    <% end %>
+  </div>
+</div>

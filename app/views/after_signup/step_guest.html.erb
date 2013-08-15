@@ -1,1 +1,11 @@
-guest step
+<div class="row">
+  <div class="span6 offset3">
+
+    <%= form_for(@user, url: after_signup_step_guest_update_path) do |f| %>
+        <%= f.label 'Firstname' %>
+        <%= f.text_field :firstname %>
+
+        <%= f.submit %>
+    <% end %>
+  </div>
+</div>

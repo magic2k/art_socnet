@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130804195721) do
+ActiveRecord::Schema.define(version: 20130814120142) do
 
   create_table "cuisines", force: true do |t|
     t.integer  "restaurant_id"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20130804195721) do
 
   add_index "restaurants", ["user_id"], name: "index_restaurants_on_user_id", unique: true
 
-  create_table "user_types", force: true do |t|
+  create_table "showman_types", force: true do |t|
     t.integer  "user_id"
     t.boolean  "emcee"
     t.boolean  "dj"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20130804195721) do
     t.datetime "updated_at"
   end
 
-  add_index "user_types", ["user_id"], name: "index_user_types_on_user_id", unique: true
+  add_index "showman_types", ["user_id"], name: "index_showman_types_on_user_id", unique: true
 
   create_table "users", force: true do |t|
     t.string   "firstname"
