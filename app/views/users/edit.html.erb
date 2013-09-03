@@ -1,1 +1,33 @@
-edit stub
+<h1>Изменение профиля</h1>
+<!-- navbar with tabs-->
+<div class="row">
+	<ul class="nav nav-tabs">
+	<!-- TODO: make a navbar partial with JS active class -->
+		<li class="active"> <%= link_to 'Основные', edit_user_path %></li>
+		<li><%= link_to 'Смена пароля', edit_user_registration_path %></li>
+	  <% if @user.usr_type == 'showman' %>
+			<li><%= link_to 'Cпециализации', edit_showman_type_path %></li>		
+	  <% end %>
+	  <% if @user.usr_type == 'restaurant' %>
+	  	<li><%= link_to 'Ресторан', edit_restaurant_path %></li>	
+	  	<li><%= link_to 'Услуги ресторана', edit_restaurant_type_path %></li>	
+	  	<li><%= link_to 'Кухня', edit_cuisine_path %></li>	
+	  <% end %>
+	</ul>
+</div>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-3">
+		<%= form_for(@user) do |f| %>
+			<%= render partial: 'users/partials/user_info_form_fields', 
+				locals: { f: f } unless @user.usr_type == 'restaurant' %>
+			<%= render partial: 'users/partials/avatar_form_field', 
+				locals: { f: f }  %>
+			<%= render partial: 'users/partials/contacts_form_fields', 
+				locals: { f: f } %>	
+			<%= f.submit 'Сохранить', class: 'btn btn-lrg btn-primary'  %>		
+		<% end %>
+		
+	</div>
+</div>
+  

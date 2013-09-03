@@ -1,0 +1,18 @@
+<h1>Рестораны</h1>
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-3">
+	<ul>
+		<% @restaurants.each do |r| %>
+		<li  class="list-inline">
+			<% if r.avatar.nil? %>
+			    <%= link_to image_tag("std_avatar.jpg", height: 64, width: 64), r %>
+			<% else %>
+				<%= link_to r.avatar, r %>
+			<% end %>
+			<%= link_to r.restaurant.name, r %>
+		</li>
+		<% end %>
+	</ul>
+	</div>
+</div>

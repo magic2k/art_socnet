@@ -44,12 +44,10 @@ class AfterSignupController < ApplicationController
     else
       render step_showman
     end
-
   end
 
-
   def step_restaurant
-    @restaurant = current_user.create_restaurant
+    @restaurant = current_user.create_restaurant(attributes = {})
   end
 
   def step_restaurant_update
@@ -62,26 +60,52 @@ class AfterSignupController < ApplicationController
   end
 
   def step_restaurant_types
-
+    @restaurant = current_user.restaurant
+    @restaurant_type = @restaurant.create_restaurant_type(attributes = {})
   end
 
   def step_restaurant_types_update
-
+    @restaurant_type = current_user.restaurant.restaurant_type
+    if @restaurant_type.update_attributes(restaurant_type_params)
+      redirect_to action: 'step_cuisines'
+    else
+      render step_restaurant_types
+    end
   end
 
   def step_cuisines
-
+    @restaurant = current_user.restaurant
+    @cuisine = @restaurant.create_cuisine(attributes = {})
+    # @cuisine = current_user.restaurant.cuisine
   end
 
   def step_cuisines_update
+    @cuisine = current_user.restaurant.cuisine
+    if @cuisine.update_attributes(cuisine_params)
+      redirect_to action: 'final_step'
+    else
+      render step_cuisines
+    end
 
   end
 
 
   def final_step
-
+    @user = current_user
   end
 
+
+  def final_step_update
+    @user = current_user
+    if @user.update_attributes(final_params)
+      @user.completed = true
+      @user.save
+      redirect_to @user
+    else
+      render final_step
+    end
+
+  end
 
   private
   def user_params
@@ -93,8 +117,57 @@ class AfterSignupController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:address, :metro, :tel, :workhours, :delivery, :parking, :wifi, :average_paybill, :max_guests, :halls_number, :about)
+    params.require(:restaurant).permit(:address, :metro, :tel, :workhours, :delivery,
+                                       :parking, :wifi, :average_paybill, :max_guests,
+                                       :halls_number, :about)
   end
+
+  def restaurant_type_params
+    params.require(:restaurant_type).permit(:bar,
+                                            :pub,
+                                            :pizza,
+                                            :barbeque,
+                                            :cafe,
+                                            :steakhouse,
+                                            :sushi_bar,
+                                            :vegan_menu,
+                                            :food_court,
+                                            :art_cafe)
+  end
+
+  def cuisine_params
+    params.require(:cuisine).permit(:european,
+                                    :chinese,
+                                    :author,
+                                    :azerbaijanian,
+                                    :armenian,
+                                    :vietnam,
+                                    :thai,
+                                    :indian,
+                                    :indonesian,
+                                    :japan,
+                                    :international,
+                                    :mexican,
+                                    :uzbekian,
+                                    :germanian,
+                                    :american,
+                                    :french,
+                                    :italian,
+                                    :mediterranian,
+                                    :ukrainian,
+                                    :czech,
+                                    :turkish,
+                                    :georgian,
+                                    :arab,
+                                    :korean,
+                                    :panazian)
+  end
+
+  def final_params
+    params.require(:user).permit(:city, :firstname, :lastname, :country,
+                                 :skype, :vkontakte, :odkl, :twitter, :phone )
+  end
+
 
   def user_completed?
     if current_user.completed

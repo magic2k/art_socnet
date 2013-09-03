@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814120142) do
+ActiveRecord::Schema.define(version: 20130815164020) do
 
   create_table "cuisines", force: true do |t|
     t.integer  "restaurant_id"
@@ -65,21 +65,18 @@ ActiveRecord::Schema.define(version: 20130814120142) do
   add_index "restaurant_types", ["restaurant_id"], name: "index_restaurant_types_on_restaurant_id", unique: true
 
   create_table "restaurants", force: true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "address"
     t.string   "metro"
-    t.string   "tel"
     t.string   "workhours"
-    t.string   "email"
     t.boolean  "delivery"
     t.boolean  "parking"
     t.boolean  "wifi"
     t.integer  "average_paybill"
     t.integer  "max_guests"
     t.integer  "halls_number"
-    t.integer  "user_id"
     t.text     "about"
-    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -111,7 +108,8 @@ ActiveRecord::Schema.define(version: 20130814120142) do
     t.string   "odkl"
     t.string   "twitter"
     t.string   "usr_type"
-    t.text     "languages"
+    t.string   "phone"
+    t.date     "birthdate"
     t.boolean  "admin",                  default: false
     t.boolean  "banned",                 default: false
     t.boolean  "completed",              default: false

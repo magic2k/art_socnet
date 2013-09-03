@@ -1,1 +1,18 @@
-<h1>final step stub</h1>
+ <div class="row">
+  <div class="span4 offset1">
+    <h1>Почти готово!</h1>
+
+    <h2>Еще немного информации:</h2>
+
+    <%= form_for(@user, url: after_signup_final_step_update_path) do |f| %>
+        <% if (@user.usr_type == 'guest') || (@user.usr_type == 'showman') %>
+            <%= render partial: 'users/partials/user_info_form_fields', locals:{ f: f }%>
+            <%= render partial: 'users/partials/contacts_form_fields', locals: { f: f } %>
+        <% elsif @user.usr_type == 'restaurant' %>
+            <%= render partial: 'users/partials/contacts_form_fields', locals: { f: f  }%>
+        <% end %>
+
+        <%= f.submit 'Готово', class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

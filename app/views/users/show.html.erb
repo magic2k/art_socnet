@@ -1,2 +1,66 @@
-<h1><%= @user.email %></h1>
-show stub
+<% provide(:title, @user.firstname) %>
+<!-- TODO: make partials there -->
+<h1> <%= @user.usr_type %></h1>
+<% if @user.usr_type == 'guest' %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <h1>
+        <%= render 'users/partials/avatar'%>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<div class="row">
+  <%= @user.firstname + ' ' + @user.lastname %>  
+</div>
+
+<div class="row">
+  <%= render 'users/partials/user_address' %>
+</div>
+
+<div class="row">
+  <%= render 'users/partials/contacts' %>
+</div>
+<!-- __________________________________________________________________ -->
+<% elsif @user.usr_type == 'showman' %>
+
+<div class="row">
+  <%= @user.firstname + ' ' + @user.lastname %>  
+</div>
+
+<div class="row">
+  <%= render 'users/partials/avatar' %>
+  <%= render 'users/partials/user_address' %>
+  <%= render 'users/partials/contacts' %>
+</div>
+
+<div class="row">
+<!--TODO: process it through l18n -->
+  Навыки:
+  <% if @showman_types %>
+    <% @showman_types.each do |t| %>
+      <%= t %>
+    <% end %>    
+  <% end %>
+</div>
+<!-- _______________________________________________________________________ -->
+<% elsif @user.usr_type == 'restaurant' %>
+  <div class="row">
+    <%= render 'users/partials/avatar' %>
+    <%= render 'users/partials/services_address' %>
+    <%= render 'users/partials/contacts' %>
+    <%= render 'users/partials/restaurant_attributes' %>
+    <%= @restaurant.about %>
+
+    <% if @restaurant_types %>
+      <% @restaurant_types.each do |t| %>
+        <%= t %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+ 
+</div>

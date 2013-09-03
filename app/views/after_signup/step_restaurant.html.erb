@@ -1,1 +1,11 @@
-step restaurant
+<div class="row">
+  <div class="span6 offset3">
+
+    <%= form_for(@restaurant, url: after_signup_step_restaurant_update_path) do |f| %>
+        <%= render partial: 'restaurants/partials/restaurant_form_fields', 
+            locals: { f: f } %>
+        <%= f.submit 'Далее >', class: 'btn btn-lrg btn-primary' %>
+
+    <% end %>
+  </div>
+</div>

@@ -13,7 +13,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :odkl
       t.string :twitter
       t.string :usr_type
-      t.text   :languages
+      t.string :phone
+      t.date   :birthdate
+      #t.text   :languages
       #t.boolean :guest,      default: false
       #t.boolean :restaurant, default: false
       #t.boolean :showman,    default: false

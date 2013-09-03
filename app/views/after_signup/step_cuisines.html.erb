@@ -1,0 +1,11 @@
+<h2>Выберите кухню вашего ресторана</h2>
+<div class="row span10">
+  <div class="checkbox">
+    <%= form_for(@cuisine, url: after_signup_step_cuisines_update_path) do |f| %>
+        <%= render partial: 'cuisines/partials/cuisines_form_fields', locals: { f: f } %>
+        <%= f.submit 'Далее >', class: "btn btn-large btn-primary" %>
+
+    <% end %>
+
+  </div>
+</div>

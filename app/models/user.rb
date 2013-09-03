@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_one :restaurant, dependent: :destroy
   has_one :showman_type,  dependent: :destroy
 
-  serialize :languages, Array
+  #serialize :languages, Array
 #has_secure_password
   validates :email, presence: true, uniqueness: true
   #validates :password, presence: true

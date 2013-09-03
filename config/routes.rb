@@ -4,11 +4,18 @@ ArtSocnet::Application.routes.draw do
   devise_scope :user do
     get 'signup',                          to: 'registrations#new'
   end
-  resources :users, only: [:index, :show, :edit]
+
+  resources :users,             only: [:index, :show, :edit, :update]
+  resources :showman_types,     only: [:edit, :update]
+  resources :restaurants,       only: [:edit, :update]
+  resources :restaurant_types,  only: [:edit, :update]
+  resources :cuisines,          only: [:edit, :update]
 
   root "static_pages#home"
   get '/help',                            to: 'static_pages#help'
   get '/contacts',                        to: 'static_pages#contacts'
+  get '/allusers',                        to: 'static_pages#allusers'
+  get '/allrestaurants',                  to: 'static_pages#allrestaurants'   
 
   #registration paths
   ##namespace :after_signup do
@@ -25,6 +32,7 @@ ArtSocnet::Application.routes.draw do
     match '/after_signup/step_restaurant_update',        to: 'after_signup#step_restaurant_update',       via:[:patch, :post]
     match '/after_signup/step_restaurant_types_update',  to: 'after_signup#step_restaurant_types_update', via:[:patch, :post]
     match '/after_signup/step_cuisines_update',          to: 'after_signup#step_cuisines_update',         via:[:patch, :post]
+    match '/after_signup/final_step_update',             to: 'after_signup#final_step_update',         via:[:patch, :post]
     #match '/after_signup/step_2_update',  to: 'after_signup#step_2_update', via: [:patch, :put]
     #get '/step_2_update',  to: 'after_signup#step_2_update'
   #end

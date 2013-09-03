@@ -1,0 +1,24 @@
+<h1>Специализации</h1>
+<div class="row">
+	<ul class="nav nav-tabs">
+		<li> <%= link_to 'Основные', edit_user_path(current_user) %></li>
+		<li><%= link_to 'Смена пароля', edit_user_registration_path %></li>
+	  <% if @user.usr_type == 'showman' %>
+			<li class="active"><%= link_to 'Cпециализации', edit_showman_type_path(current_user) %></li>		
+	  <% end %>
+	  <% if @user.usr_type == 'restaurant' %>
+	  	<li><%= link_to 'Ресторан', edit_restaurant_path(current_user) %></li>	
+	  <% end %>
+	</ul>
+</div>
+
+<div class="row">
+	<div class="col-md-4 col-md-ofset-3">
+		<%= form_for(@showman_type) do |f| %>
+			<%= render partial: 'shared/error_messages', locals: { object: @showman_type } %>
+			<%= render partial: 'showman_types/partials/showman_types_form_fields', locals: {f: f} %>
+        	<%= f.submit 'Сохранить', class: 'btn btn-lrg btn-primary' %>
+		<% end %>
+		  
+	</div>	
+</div>
