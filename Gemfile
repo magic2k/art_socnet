@@ -19,6 +19,7 @@ gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'devise'
 gem 'omniauth-github'
+gem 'paperclip', '~> 3.5'
 #gem 'gcal-ruby'
 
 group :doc do

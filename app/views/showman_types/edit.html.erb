@@ -17,7 +17,7 @@
 		<%= form_for(@showman_type) do |f| %>
 			<%= render partial: 'shared/error_messages', locals: { object: @showman_type } %>
 			<%= render partial: 'showman_types/partials/showman_types_form_fields', locals: {f: f} %>
-        	<%= f.submit 'Сохранить', class: 'btn btn-lrg btn-primary' %>
+        	<%= f.submit 'Сохранить', class: 'btn btn-lg btn-primary' %>
 		<% end %>
 		  
 	</div>	

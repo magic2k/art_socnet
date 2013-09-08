@@ -117,7 +117,7 @@ class AfterSignupController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:address, :metro, :tel, :workhours, :delivery,
+    params.require(:restaurant).permit(:name, :address, :metro, :tel, :workhours, :delivery,
                                        :parking, :wifi, :average_paybill, :max_guests,
                                        :halls_number, :about)
   end

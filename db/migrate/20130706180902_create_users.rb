@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.string :firstname
       t.string :lastname
-      t.string :avatar
+      t.attachment :avatar
       t.string :city
       t.string :country
       t.string :password_digest
@@ -26,6 +26,6 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
-
+    # add_attachment :users, :avatar
   end
 end
