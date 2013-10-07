@@ -20,6 +20,7 @@ gem 'faker'
 gem 'devise'
 gem 'omniauth-github'
 gem 'paperclip', '~> 3.5'
+#em "blueimp-gallery-rails", "~> 2.7.0"
 #gem 'gcal-ruby'
 
 group :doc do

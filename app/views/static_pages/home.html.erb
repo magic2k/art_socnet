@@ -1,6 +1,6 @@
 <%= provide(:title, 'Главная') %>
 <% if user_signed_in? %>
-    current_user.email
+	<%= current_user.firstname %> signed in
 
 <% else %>
     <h1>Главная</h1>
@@ -8,5 +8,8 @@
     <%= link_to "Зарегистрируйтесь!", signup_path,
                 class: "btn btn-large btn-primary" %>
 <% end %>
-    <%= link_to 'Люди', allusers_path %>
-    <%= link_to 'Рестораны', allrestaurants_path %>
+<ul>
+	<li><%= link_to 'Люди', allusers_path %></li>
+	<li><%= link_to 'Рестораны', allrestaurants_path %></li>
+</ul>
+    

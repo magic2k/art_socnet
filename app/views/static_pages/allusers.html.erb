@@ -11,9 +11,9 @@
 					<blockquote>
 						<p><%= link_to( u.firstname + ' ' + u.lastname, u ) %></p>
 						<small><cite><% u.showman_type.to_types_array(u.showman_type).each do |t| %>
-						 				<%= (t + ' ') %> 
-									 <% end %>
-							   </cite><i class="glyphicon glyphicon-eye-open"></i></small>
+						 			<%= (t + ' ') %> 
+								<% end %>
+							   </cite></small>
 					</blockquote>
 				</div>
 			</div>

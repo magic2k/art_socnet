@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
     thumb: ['100x100>', :png]}, default_url: 'std_avatar.jpg'
   has_one :restaurant, dependent: :destroy
   has_one :showman_type,  dependent: :destroy
-
+  has_many :albums, dependent: :destroy
+  
   #serialize :languages, Array
 #has_secure_password
   validates :email, presence: true, uniqueness: true

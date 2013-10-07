@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815164020) do
+ActiveRecord::Schema.define(version: 20130922192820) do
+
+  create_table "albums", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "image_id"
+    t.string   "album_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "albums", ["user_id", "id"], name: "index_albums_on_user_id_and_id"
 
   create_table "cuisines", force: true do |t|
     t.integer  "restaurant_id"
@@ -45,6 +55,19 @@ ActiveRecord::Schema.define(version: 20130815164020) do
   end
 
   add_index "cuisines", ["restaurant_id"], name: "index_cuisines_on_restaurant_id", unique: true
+
+  create_table "images", force: true do |t|
+    t.integer  "album_id"
+    t.string   "comment"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["album_id"], name: "index_images_on_album_id"
 
   create_table "restaurant_types", force: true do |t|
     t.integer  "restaurant_id"
