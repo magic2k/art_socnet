@@ -1,25 +1,27 @@
 ArtSocnet::Application.routes.draw do
 
-  get "albums/new"
-  get "albums/edit"
-  get "albums/update"
-  get "albums/delete"
+  # get "albums/new"
+  # get "albums/edit"
+  # get "albums/update"
+  # get "albums/delete"
   devise_for :users, controllers: { registrations: "registrations" }
   devise_scope :user do
     get 'signup',                          to: 'registrations#new'
   end
 
-  resources :users,             only: [:index, :show, :edit, :update]
+  resources :users,             only: [:index, :show, :edit, :update] do
+    resources :albums, shallow: true
+  end
+    
   resources :showman_types,     only: [:edit, :update]
   resources :restaurants,       only: [:edit, :update]
   resources :restaurant_types,  only: [:edit, :update]
   resources :cuisines,          only: [:edit, :update]
-  resources :albums
 
   root "static_pages#home"
   get '/help',                            to: 'static_pages#help'
   get '/contacts',                        to: 'static_pages#contacts'
-  get '/allusers',                        to: 'static_pages#allusers'
+  get '/allusers',                        to: 'static_pages#allusers' #change to index method?
   get '/allrestaurants',                  to: 'static_pages#allrestaurants'   
 
   #registration paths

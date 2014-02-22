@@ -1,5 +1,5 @@
 class RestaurantType < ActiveRecord::Base
-	include ModulesHelper
+  include ModulesHelper
 
   belongs_to :restaurant
 

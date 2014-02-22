@@ -1,2 +1,16 @@
-<h1>Albums#edit</h1>
-<p>Find me in app/views/albums/edit.html.erb</p>
+<h1>Альбом: редактирование</h1>
+
+<!-- navbar with tabs-->
+<div class="row">
+  <%= render partial: 'shared/edit_tabs', locals: {user_id: @user.id} %>
+</div>
+
+<div class="container">
+  <div class="row">
+    "Добавить фотографии"
+    <%= form_for @album, html: {multipart: true} do |f| %>
+
+
+  </div>
+</div>	
+

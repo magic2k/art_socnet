@@ -165,7 +165,7 @@ class AfterSignupController < ApplicationController
 
   def final_params
     params.require(:user).permit(:city, :firstname, :lastname, :country,
-                                 :skype, :vkontakte, :odkl, :twitter, :phone )
+                                 :skype, :vkontakte, :odkl, :twitter, :phone)
   end
 
 

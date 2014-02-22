@@ -1,0 +1,30 @@
+<h1>Альбомы</h1>
+<div class="row">
+  <%= render partial: 'shared/edit_tabs', locals: {user_id: @user.id} %>
+</div>
+
+<div class="container">
+  <% if current_user == @user %>
+      <div class="row">
+        <aside>
+          <%= link_to 'Создать новый альбом', new_user_album_path, class: 'btn btn-default btn-sm' %>
+        </aside>
+      </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-offset-2">
+      <% @albums.each do |a| %>
+          <div class="row">
+            <div class="col-md-4">
+              <%= link_to(a.album_name, a) %>
+              <% if current_user == @user || current_user.admin? %>
+                  <%= link_to('Изменить', edit_album_path(a), class: "small") %>
+                  <%= link_to('Удалить', a, method: :delete, confirm: 'Точно удалить?', class: 'sm') %>
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>	
+

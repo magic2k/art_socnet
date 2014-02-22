@@ -1,25 +1,25 @@
 class CuisinesController < ApplicationController
-before_action :authenticate_user!, only: [:edit] #update
+  before_action :authenticate_user!, only: [:edit] #update
 
-	def edit
-		@user = User.find(params[:id])
-		@cuisine = @user.restaurant.cuisine
-	end
+  def edit
+    @user = User.find(params[:id])
+    @cuisine = @user.restaurant.cuisine
+  end
 
-	def update
-		@user = current_user
-		@cuisine = @user.restaurant.cuisine
+  def update
+    @user = current_user
+    @cuisine = @user.restaurant.cuisine
 
-		if @cuisine.update_attributes(cuisine_params)
-			flash[:success] = "Профиль обновлен"  
-      		redirect_to @user	
-      	else
-      		render 'edit'
-		end
-	end
+    if @cuisine.update_attributes(cuisine_params)
+      flash[:success] = "Профиль обновлен"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
 
-  	private
-  	def cuisine_params
+  private
+  def cuisine_params
     params.require(:cuisine).permit(:european,
                                     :chinese,
                                     :author,

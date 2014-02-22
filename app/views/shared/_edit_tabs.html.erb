@@ -1,0 +1,37 @@
+<ul class="nav nav-tabs" id="editTabs">
+  <li> <%= link_to 'Основные', edit_user_path(user_id) %></li>
+  <li><%= link_to 'Смена пароля', edit_user_registration_path(user_id) %></li>
+
+  <li><%= link_to 'Альбомы', user_albums_path(user_id) %></li>
+  <% if @user.usr_type == 'showman' %>
+      <li><%= link_to 'Cпециализации', edit_showman_type_path(user_id) %></li>
+  <% end %>
+  <% if @user.usr_type == 'restaurant' %>
+      <li><%= link_to 'Ресторан', edit_restaurant_path(user_id) %></li>
+      <li><%= link_to 'Услуги ресторана', edit_restaurant_type_path(user_id) %></li>
+      <li><%= link_to 'Кухня', edit_cuisine_path(user_id) %></li>
+  <% end %>
+</ul>
+
+<script>
+    /*menu handler*/
+    $(function () {
+        function stripTrailingSlash(str) {
+            if (str.substr(-1) == '/') {
+                return str.substr(0, str.length - 1);
+            }
+            return str;
+        }
+
+        var url = window.location.pathname;
+        var activePage = stripTrailingSlash(url);
+
+        $('.nav li a').each(function () {
+            var currentPage = stripTrailingSlash($(this).attr('href'));
+
+            if (activePage == currentPage) {
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script>

@@ -118,7 +118,7 @@ aside {
     padding: 10px 0;
     border-top: 1px solid $lightGray;
     &:first-child {
-      border:0;
+      border: 0;
       padding-top: 0;
     }
     span {
@@ -203,7 +203,7 @@ aside {
     overflow: auto;
     padding: 10px 0;
     border-top: 1px solid $grayMediumLight;
-    &:last-child{
+    &:last-child {
       border-bottom: 1px solid $grayMediumLight;
     }
   }
@@ -228,10 +228,12 @@ aside {
 .timestamp {
   color: $lightGray;
 }
+
 .gravatar {
   float: left;
   margin-right: 10px;
 }
+
 aside {
   textarea {
     height: 100px;

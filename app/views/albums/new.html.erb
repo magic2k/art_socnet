@@ -1,2 +1,13 @@
-<h1>Albums#new</h1>
-<p>Find me in app/views/albums/new.html.erb</p>
+<% provide(:title, 'Creating new album') %>
+<h1>Новый альбом</h1>
+<%= form_for(@album, url: user_albums_path) do |f| %>
+    <%#= render 'shared/error_messages', object: @user %>
+
+    <%= f.label 'Название альбома' %>
+    <%= f.text_field :album_name %>
+
+
+    <%= f.submit "Создать альбом", class: "btn btn-lg btn-primary" %>
+
+<% end %>
+  

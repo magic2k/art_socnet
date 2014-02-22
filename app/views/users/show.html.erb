@@ -3,100 +3,104 @@
 <h1> <%= @user.usr_type %></h1>
 <% if @user.usr_type == 'guest' %>
 
-<div class="row">
-  <aside class="col-md-4">
-    <section>
-      <h1>
-        <%= render 'users/partials/avatar'%>
-      </h1>
-    </section>
-  </aside>
-</div>
+    <div class="row">
+      <aside class="col-md-4">
+        <section>
+          <h1>
+            <%= render 'users/partials/avatar' %>
+          </h1>
+        </section>
+      </aside>
+    </div>
 
-<div class="row">
-  <%= @user.firstname + ' ' + @user.lastname %>  
-</div>
+    <div class="row">
+      <%= @user.firstname + ' ' + @user.lastname %>
+    </div>
 
-<div class="row">
-  <%= render 'users/partials/user_address' %>
-</div>
+    <div class="row">
+      <%= render 'users/partials/user_address' %>
+    </div>
 
-<div class="row">
-  <%= render 'users/partials/contacts' %>
-</div>
-<!-- __________________________________________________________________ -->
+    <div class="row">
+      <%= render 'users/partials/contacts' %>
+    </div>
+    <!-- __________________________________________________________________ -->
 <% elsif @user.usr_type == 'showman' %>
 
-<div class="row">
-  <%= @user.firstname + ' ' + @user.lastname %>  
-</div>
+    <div class="row">
+      <%= @user.firstname + ' ' + @user.lastname %>
+    </div>
 
-<div class="row">
-  <%= render 'users/partials/avatar' %>
-  <%= render 'users/partials/user_address' %>
-  <%= render 'users/partials/contacts' %>
-</div>
+    <div class="row">
+      <%= render 'users/partials/avatar' %>
+      <%= render 'users/partials/user_address' %>
+      <%= render 'users/partials/contacts' %>
+    </div>
 
-<div class="row">
-<!--TODO: process it through l18n -->
-  Навыки:
-  <% if @showman_types %>
-    <% @showman_types.each do |t| %>
-      <%= t %>
-    <% end %>    
-  <% end %>
-</div>
-
-<div class="row">
-  <div id="blueimp-gallery" class="blueimp-gallery">
-    <div class="slides"></div>
-    <h3 class="title"></h3>
-    <a class="prev">‹</a>
-    <a class="next">›</a>
-    <a class="close">×</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
-  </div>
-</div>
-<div id="links">
-
-    <a href="<%= '/assets/1.jpg' %>"><%= image_tag '1.jpg', size: '64x64' %></a>  
-    <a href="<%= '/assets/4.jpg' %>"><%= image_tag '4.jpg', size: '64x64' %></a>  
-    <a href="<%= '/assets/3.jpg' %>"><%= image_tag '3.jpg', size: '64x64' %></a>  
-    <a href="<%= '/assets/2.jpg' %>"><%= image_tag '2.jpg', size: '64x64' %></a>  
-    <a href="<%= '/assets/5.jpg' %>"><%= image_tag '5.jpg', size: '64x64' %></a>  
-    <a href="<%= '/assets/6.jpg' %>"><%= image_tag '6.jpg', size: '64x64' %></a>  
-    <a href="<%= '/assets/7.jpg' %>"><%= image_tag '7.jpg', size: '64x64' %></a>  
-</div>
-
-<!-- _______________________________________________________________________ -->
-<% elsif @user.usr_type == 'restaurant' %>
-  <div class="row">
-    <%= render 'users/partials/avatar' %>
-    <%= render 'users/partials/services_address' %>
-    <%= render 'users/partials/contacts' %>
-    <%= render 'users/partials/restaurant_attributes' %>
-    <%= @restaurant.about %>
-
-    <% if @restaurant_types %>
-      <% @restaurant_types.each do |t| %>
-        <%= t %>
+    <div class="row">
+      <!--TODO: process it through l18n -->
+      Навыки:
+      <% if @showman_types %>
+          <% @showman_types.each do |t| %>
+              <%= t %>
+          <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+
+    <div class="row">
+      <div id="blueimp-gallery" class="blueimp-gallery">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+      </div>
+    </div>
+    <div id="links">
+
+      <a href="<%= '/assets/1.jpg' %>"><%= image_tag '1.jpg', size: '64x64' %></a>
+      <a href="<%= '/assets/4.jpg' %>"><%= image_tag '4.jpg', size: '64x64' %></a>
+      <a href="<%= '/assets/3.jpg' %>"><%= image_tag '3.jpg', size: '64x64' %></a>
+      <a href="<%= '/assets/2.jpg' %>"><%= image_tag '2.jpg', size: '64x64' %></a>
+      <a href="<%= '/assets/5.jpg' %>"><%= image_tag '5.jpg', size: '64x64' %></a>
+      <a href="<%= '/assets/6.jpg' %>"><%= image_tag '6.jpg', size: '64x64' %></a>
+      <a href="<%= '/assets/7.jpg' %>"><%= image_tag '7.jpg', size: '64x64' %></a>
+    </div>
+
+    <div class="row">
+      <%= link_to 'Альбомы', user_albums_path(@user.id) %>
+    </div>
+
+    <!-- _______________________________________________________________________ -->
+<% elsif @user.usr_type == 'restaurant' %>
+    <div class="row">
+      <%= render 'users/partials/avatar' %>
+      <%= render 'users/partials/services_address' %>
+      <%= render 'users/partials/contacts' %>
+      <%= render 'users/partials/restaurant_attributes' %>
+      <%= @restaurant.about %>
+
+      <% if @restaurant_types %>
+          <% @restaurant_types.each do |t| %>
+              <%= t %>
+          <% end %>
+      <% end %>
+    </div>
 <% end %>
- 
+
 </div>
 
 <!-- <script src="/blueimp-gallery.min.js"></script> -->
 
 <script>
-document.getElementById('links').onclick = function (event) {
-    event = event || window.event;
-    var target = event.target || event.srcElement,
-        link = target.src ? target.parentNode : target,
-        options = {index: link, event: event},
-        links = this.getElementsByTagName('a');
-    blueimp.Gallery(links, options);
-};
+    document.getElementById('links').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = {index: link, event: event},
+                links = this.getElementsByTagName('a');
+        blueimp.Gallery(links, options);
+    };
 </script>
