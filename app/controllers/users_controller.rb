@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :delete] #destroy?
+  before_action :authenticate_user!, only: [:edit, :delete]  #destroy?
 
   def new
     @user = User.new
@@ -54,10 +54,12 @@ class UsersController < ApplicationController
             :email,
             :city,
             :country,
+            :birthdate, #?
             :skype, :vkontakte, :odkl, :twitter,
             :phone)
     # :password, :password_confirmation,
     # :unconfirmed_email)
   end
+
 
 end

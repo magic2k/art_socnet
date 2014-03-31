@@ -25,6 +25,7 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    @images = Image.where(album_id: @album)
   end
 
   def edit
@@ -33,6 +34,7 @@ class AlbumsController < ApplicationController
   end
 
   def update
+
   end
 
   def destroy

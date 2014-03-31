@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20130922192820) do
 
   create_table "albums", force: true do |t|
     t.integer  "user_id"
-    t.integer  "image_id"
+    t.integer  "cover_id"
     t.string   "album_name"
     t.datetime "created_at"
     t.datetime "updated_at"

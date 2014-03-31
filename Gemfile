@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.0'
+#gem 'rails', '~> 4.0.0'
+gem 'rails'
 gem 'sqlite3'
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
-#gem 'coffee-rails', '~> 4.0.0'
-gem 'coffee-rails', '~> 4.0'
+#gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
+gem 'uglifier'
+#gem 'coffee-rails', '~> 4.0.'
+gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -13,13 +15,12 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-#gem 'bootstrap-sass'
-gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
+gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'devise'
 gem 'omniauth-github'
-gem 'paperclip', '~> 3.5'
+gem 'paperclip', '~> 4.1'
 #em "blueimp-gallery-rails", "~> 2.7.0"
 #gem 'gcal-ruby'
 
