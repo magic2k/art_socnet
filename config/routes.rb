@@ -9,8 +9,11 @@ ArtSocnet::Application.routes.draw do
     get 'signup',                          to: 'registrations#new'
   end
 
-  resources :users,             only: [:index, :show, :edit, :update] do
-    resources :albums, shallow: true
+  #resources :users,             only: [:index, :show, :edit, :update] do
+  resources :users  do
+    resources :albums, shallow: true do
+      resources :images
+    end
   end
     
   resources :showman_types,     only: [:edit, :update]

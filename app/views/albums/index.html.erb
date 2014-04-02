@@ -20,7 +20,7 @@
               <% if current_user == @user || current_user.admin? %>
                   <%= link_to('Фотографии', edit_image_path(a), class: "small") %>
                   <%= link_to('Изменить', edit_album_path(a), class: "small") %>
-                  <%= link_to('Удалить', a, method: :delete, confirm: 'Точно удалить?', class: 'sm') %>
+                  <%= link_to('Удалить', a, method: :delete, data: {confirm: 'Точно удалить?'}, class: 'sm') %>
               <% end %>
             </div>
           </div>

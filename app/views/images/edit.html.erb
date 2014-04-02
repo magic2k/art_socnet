@@ -1,0 +1,18 @@
+<h1>Фотографии: редактирование</h1>
+<!-- id = album_id -->
+<!-- navbar with tabs-->
+<div class="row">
+  <%= render partial: 'shared/edit_tabs', locals: {user_id: @user.id} %>
+</div>
+
+<div class="container">
+  <div class="row">
+    "Добавить фотографии"
+    <%# form_for new_album_image_path(@album), html: {multipart: true} do |f| %>
+    <%= form_for @image, url:new_album_image_path(@album, @image), html: {multipart: true} do |f| %>
+        <%= f.label 'add images' %>
+        <%= f.file_field :images %>
+        <%= f.submit 'добавить', class: 'btn btn-lg btn-primary' %>
+    <% end  %>
+  </div>
+</div>
