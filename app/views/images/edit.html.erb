@@ -9,10 +9,18 @@
   <div class="row">
     "Добавить фотографии"
     <%# form_for new_album_image_path(@album), html: {multipart: true} do |f| %>
-    <%= form_for @image, url:new_album_image_path(@album, @image), html: {multipart: true} do |f| %>
+    <%= form_for [@album, @image], html: {multipart: true} do |f| %>
         <%= f.label 'add images' %>
-        <%= f.file_field :images %>
+        <%= f.file_field :image %>
         <%= f.submit 'добавить', class: 'btn btn-lg btn-primary' %>
     <% end  %>
+  </div>
+  <div class="container">
+    <div class="row">
+        <% @album.images.each do |img| %>
+          <%= link_to image_tag(img.image(:thumb)), img %>
+          <%= link_to('удалить', img, method: :delete, confirm: 'Точно удалить?') %>
+        <% end  %>
+    </div>
   </div>
 </div>

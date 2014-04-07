@@ -20,7 +20,9 @@ gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'devise'
 gem 'omniauth-github'
-gem 'paperclip', '~> 4.1'
+#gem 'paperclip', '~> 4.1'
+gem 'paperclip'
+gem 'cocaine'
 #em "blueimp-gallery-rails", "~> 2.7.0"
 #gem 'gcal-ruby'
 

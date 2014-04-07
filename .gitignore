@@ -16,6 +16,7 @@
 /tmp
 
 /.idea
+/config/database.yml
 
 # paperclip avatars
 /public/system

@@ -39,6 +39,9 @@ class UsersController < ApplicationController
       @restaurant_types = @restaurant.restaurant_type.to_types_array(@restaurant.restaurant_type)
       @cuisines = @restaurant.cuisine.to_types_array(@restaurant.cuisine)
     end
+
+    @albums = Album.find(user:@user)
+    #@images = Image
   end
 
   #def after_sign_out_path_for(resource_name)

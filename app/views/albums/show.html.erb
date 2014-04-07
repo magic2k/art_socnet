@@ -1,7 +1,18 @@
 <div class="row">
-  <div id="links">
-    <%= @images.each do |image| %>
-    <a href="<%= image %>"><%= image_tag image, size: '64x64' %></a>
+  <div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+  </div>
+</div>
+
+<div id="links">
+    <% @images.each do |img| %>
+      <%= link_to image_tag(img.image(:thumb)), img.image.url %>
     <% end %>
   </div>
 </div>
