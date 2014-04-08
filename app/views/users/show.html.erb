@@ -60,7 +60,10 @@
     </div>
 
     <div id="links">
-
+      <% @all_images.each do |img| %>
+        <%= link_to image_tag(img.image.url(:thumb)), img  %>
+      <% end %>
+      <%= @albums %>
     </div>
 
     <div class="row">

@@ -31,6 +31,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #display user albums images
+    @all_images = []
+    @albums = @user.albums
+    #TODO: Todo todo todo todo todo tdo todoooooo
+    if !(@albums.nil?)
+      @albums.each do |album|
+        img = Image.find_by(album_id: album.id)
+        @all_images << img
+      end
+    end
 
     if @user.usr_type == 'showman'
       @showman_types = @user.showman_type.to_types_array(@user.showman_type)
@@ -40,8 +50,6 @@ class UsersController < ApplicationController
       @cuisines = @restaurant.cuisine.to_types_array(@restaurant.cuisine)
     end
 
-    @albums = Album.find(user:@user)
-    #@images = Image
   end
 
   #def after_sign_out_path_for(resource_name)
