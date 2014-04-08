@@ -37,8 +37,9 @@ class UsersController < ApplicationController
     #TODO: Todo todo todo todo todo tdo todoooooo
     if !(@albums.nil?)
       @albums.each do |album|
-        img = Image.find_by(album_id: album.id)
-        @all_images << img
+        album.images.each do |img|
+          @all_images << img
+        end
       end
     end
 
