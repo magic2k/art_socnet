@@ -1,6 +1,9 @@
 <% provide(:title, @user.firstname) %>
 <!-- TODO: make partials there -->
 <h1> <%= @user.usr_type %></h1>
+<% if @user != @current_user %>
+  <%= link_to('Отправить сообщение', new_user_message_path(@user)) %>
+<% end %>
 <% if @user.usr_type == 'guest' %>
 
     <div class="row">
@@ -59,12 +62,11 @@
       </div>
     </div>
 
+    <!--TODO: maybe show only 8-10 images and do randomization?-->
     <div id="links">
       <% @all_images.each do |img| %>
         <%= link_to image_tag(img.image.url(:thumb)), img.image.url  %>
-        <%# link_to image_tag(img.map(&image)), img  %>
       <% end %>
-      <%= @albums %>
     </div>
 
     <div class="row">

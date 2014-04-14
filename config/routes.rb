@@ -1,5 +1,8 @@
 ArtSocnet::Application.routes.draw do
 
+  # get "message/new"
+  # get "message/create"
+  # get "message/show"
   # get "albums/new"
   # get "albums/edit"
   # get "albums/update"
@@ -14,6 +17,8 @@ ArtSocnet::Application.routes.draw do
     resources :albums, shallow: true do
       resources :images
     end
+
+    resources :messages, only: [:index, :show, :new, :create]
   end
     
   resources :showman_types,     only: [:edit, :update]
