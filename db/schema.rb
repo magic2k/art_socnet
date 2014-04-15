@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411183003) do
+ActiveRecord::Schema.define(version: 20140414152016) do
 
   create_table "albums", force: true do |t|
     t.integer  "user_id"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20140411183003) do
   end
 
   add_index "albums", ["user_id", "id"], name: "index_albums_on_user_id_and_id"
+
+  create_table "conversations", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.integer  "message_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
+  add_index "conversations", ["sender_id", "recipient_id"], name: "index_conversations_on_sender_id_and_recipient_id"
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
 
   create_table "cuisines", force: true do |t|
     t.integer  "restaurant_id"

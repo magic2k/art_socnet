@@ -10,13 +10,16 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @receiver_id = params[:user_id]
+    @conversation = get_conversation
     @message.sender_id = User.find(current_user.id)
-    @message.receiver_id = params[:user_id]
+    @message.receiver_id = @receiver_id
+    @message.conversation = @conversation
     if @message.save
       flash[:success] = "msg sent"
       redirect_to user_path(params[:user_id])
     else
-      flash[:alert] = "hui"
+      flash[:error] = "hui"
       render 'new'
     end
   end
@@ -27,7 +30,22 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:sender, :receiver, :content)
+    params.require(:message).permit(:content)
+  end
+
+  def get_conversation
+    @conversation = Conversation.take([current_user.id, @receiver_id])
+
+    if @conversation.nil?
+      Conversation.new do |c|
+        c.sender_id = current_user.id
+        c.receiver_id = @receiver_id
+        #TODO: catch ex if can't save to db
+        c.save
+      end
+    end
+
+    @conversation
   end
 
 end

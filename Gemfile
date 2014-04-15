@@ -23,6 +23,7 @@ gem 'omniauth-github'
 #gem 'paperclip', '~> 4.1'
 gem 'paperclip'
 gem 'cocaine'
+gem 'composite_primary_keys'
 #em "blueimp-gallery-rails", "~> 2.7.0"
 #gem 'gcal-ruby'
 
