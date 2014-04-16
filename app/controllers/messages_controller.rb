@@ -12,8 +12,8 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @receiver_id = params[:user_id]
     @conversation = get_conversation
-    @message.sender_id = User.find(current_user.id)
-    @message.receiver_id = @receiver_id
+    # @message.sender_id = User.find(current_user.id)
+    # @message.receiver_id = @receiver_id
     @message.conversation = @conversation
     if @message.save
       flash[:success] = "msg sent"
@@ -34,16 +34,16 @@ class MessagesController < ApplicationController
   end
 
   def get_conversation
-    @conversation = Conversation.take([current_user.id, @receiver_id])
+    @conversation = Conversation.find_or_create_by(sender_id: current_user.id, receiver_id: @receiver_id.to_i)
 
-    if @conversation.nil?
-      Conversation.new do |c|
-        c.sender_id = current_user.id
-        c.receiver_id = @receiver_id
-        #TODO: catch ex if can't save to db
-        c.save
-      end
-    end
+    # if @conversation.nil?
+    #   Conversation.new do |c|
+    #     c.sender_id = current_user.id
+    #     c.receiver_id = @receiver_id
+    #     #TODO: catch ex if can't save to db
+    #     c.save
+    #   end
+    # end
 
     @conversation
   end
