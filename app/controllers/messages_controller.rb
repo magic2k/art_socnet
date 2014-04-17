@@ -34,7 +34,8 @@ class MessagesController < ApplicationController
   end
 
   def get_conversation
-    @conversation = Conversation.find_or_create_by(sender_id: current_user.id, receiver_id: @receiver_id.to_i)
+    @conversation = Conversation.find_or_initialize_by( {sender_id: current_user.id, receiver_id: @receiver_id.to_i})
+    # @conversation = Conversation.find_or_create_by(sender_id: current_user.id, receiver_id: @receiver_id.to_i)
 
     # if @conversation.nil?
     #   Conversation.new do |c|
