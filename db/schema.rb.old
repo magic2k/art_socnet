@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140414152016) do
   create_table "conversations", force: true do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
+    t.integer  "message_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,13 +82,16 @@ ActiveRecord::Schema.define(version: 20140414152016) do
   add_index "images", ["album_id"], name: "index_images_on_album_id"
 
   create_table "messages", force: true do |t|
-    t.integer  "conversation_id"
+    t.string   "sender"
+    t.string   "recipient"
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
+  add_index "messages", ["recipient"], name: "index_messages_on_recipient"
+  add_index "messages", ["sender", "recipient"], name: "index_messages_on_sender_and_recipient"
+  add_index "messages", ["sender"], name: "index_messages_on_sender"
 
   create_table "restaurant_types", force: true do |t|
     t.integer  "restaurant_id"
