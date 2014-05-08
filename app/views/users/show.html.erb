@@ -4,6 +4,11 @@
 <% if @user != @current_user %>
   <%= link_to('Отправить сообщение', new_user_message_path(@user)) %>
 <% end %>
+
+<% if @user == current_user %>
+    <%= link_to('Мои сообщения', user_conversations_path(@user)) %>
+<%end  %>
+
 <% if @user.usr_type == 'guest' %>
 
     <div class="row">

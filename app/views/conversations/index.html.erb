@@ -1,0 +1,4 @@
+<% @conversations.each do |c| %>
+    <%= c.get_other_recipient(current_user).avatar(:thumb) %>
+
+<% end %>

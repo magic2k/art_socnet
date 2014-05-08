@@ -13,8 +13,9 @@ class User < ActiveRecord::Base
   has_one :restaurant, dependent: :destroy
   has_one :showman_type, dependent: :destroy
   has_many :albums, dependent: :destroy
-  has_many :conversations, foreign_key: 'sender_id', dependent: :destroy
-  has_many :recipients, through: :conversations, source: :receiver
+  # has_many :conversations, foreign_key: 'sender_id', dependent: :destroy
+  # has_many :conversations, foreign_key: 'recipient_id', dependent: :destroy
+  # has_many :recipients, through: :conversations, source: :recipient
   # has_many :recipients, through: :messages, source: :receiver
 
   #serialize :languages, Array

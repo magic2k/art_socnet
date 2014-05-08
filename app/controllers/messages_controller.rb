@@ -10,10 +10,10 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @receiver_id = params[:user_id]
-    @conversation = get_conversation
-    # @message.sender_id = User.find(current_user.id)
-    # @message.receiver_id = @receiver_id
+    @recipient_id = params[:user_id]
+    @conversation = Conversation.get_conversation(current_user.id, @recipient_id)
+    @message.sender_id = current_user.id
+    @message.recipient_id = @recipient_id
     @message.conversation = @conversation
     if @message.save
       flash[:success] = "msg sent"
@@ -31,23 +31,6 @@ class MessagesController < ApplicationController
   private
   def message_params
     params.require(:message).permit(:content)
-  end
-
-  def get_conversation
-    # @conversation = Conversation.find_or_initialize_by( {sender_id: current_user.id, receiver_id: @receiver_id.to_i})
-    @conversation = Conversation.find_by( sender_id: current_user.id, receiver_id: @receiver_id )
-    # @conversation = Conversation.find_or_create_by(sender_id: current_user.id, receiver_id: @receiver_id.to_i)
-
-    # if @conversation.nil?
-    #   Conversation.new do |c|
-    #     c.sender_id = current_user.id
-    #     c.receiver_id = @receiver_id
-    #     #TODO: catch ex if can't save to db
-    #     c.save
-    #   end
-    # end
-
-    @conversation
   end
 
 end

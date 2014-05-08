@@ -19,7 +19,7 @@ ArtSocnet::Application.routes.draw do
     end
 
     resources :messages, only: [:index, :show, :new, :create]
-    resources :conversations, only: [:index, :show, :new, :create]
+    resources :conversations, only: [:index, :show]
   end
     
   resources :showman_types,     only: [:edit, :update]

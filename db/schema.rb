@@ -24,15 +24,14 @@ ActiveRecord::Schema.define(version: 20140414152016) do
   add_index "albums", ["user_id", "id"], name: "index_albums_on_user_id_and_id"
 
   create_table "conversations", force: true do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
+    t.integer  "user1_id"
+    t.integer  "user2_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
-  add_index "conversations", ["sender_id", "recipient_id"], name: "index_conversations_on_sender_id_and_recipient_id"
-  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
+  add_index "conversations", ["user1_id"], name: "index_conversations_on_user1_id"
+  add_index "conversations", ["user2_id"], name: "index_conversations_on_user2_id"
 
   create_table "cuisines", force: true do |t|
     t.integer  "restaurant_id"
@@ -82,12 +81,16 @@ ActiveRecord::Schema.define(version: 20140414152016) do
 
   create_table "messages", force: true do |t|
     t.integer  "conversation_id"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
+  add_index "messages", ["recipient_id"], name: "index_messages_on_recipient_id"
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id"
 
   create_table "restaurant_types", force: true do |t|
     t.integer  "restaurant_id"
