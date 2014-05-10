@@ -1,4 +1,19 @@
-<% @conversations.each do |c| %>
-    <%= c.get_other_recipient(current_user).avatar(:thumb) %>
-
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 md-col-6">
+      <div class="conversations-list">
+        <ul>
+          <% @conversations.each do |c| %>
+              <li>
+                <% recipient = c.get_other_recipient(current_user) %>
+                <%= link_to image_tag(recipient.avatar(:thumb), width: 64), recipient %>
+                <%= link_to recipient.firstname, recipient %>
+                <%= link_to content_tag(:dsiv, c.messages.last.content, class: 'teasaxt-center'), c,
+                                        class: 'last-message-text' %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

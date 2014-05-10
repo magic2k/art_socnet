@@ -1,0 +1,38 @@
+$grayMediumLight: #eaeaea;
+
+.conversations-list {
+  list-style: none;
+  margin: 0;
+  li {
+    border-top: 1px solid $grayMediumLight;
+    &:last-child {
+      border-bottom: 1px solid $grayMediumLight;
+    }
+  }
+}
+
+.conversations-list, .messages-list {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+  }
+}
+
+.last-message-text {
+  font-size: small;
+  color: gray;
+  padding-left: 40px;
+}
+
+.message-create-date {
+  color: gray;
+  padding-left: 80px;
+  padding-right: 20px;
+  right: 80px;
+  position: absolute;
+  text-align: right;
+  font-size: 70%;
+  font: "Helvetica";
+}

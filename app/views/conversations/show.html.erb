@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="md-col-6">
+      <div class="messages-list">
+        <ul>
+          <% @messages.each do |m| %>
+              <li>
+                <%= link_to image_tag(m.sender.avatar(:thumb), width: 48), m.sender %>
+                <%= m.content %>
+                <%= content_tag(:cifte, m.created_at, class: 'message-create-date') %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

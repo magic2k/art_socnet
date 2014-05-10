@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
     @message.recipient_id = @recipient_id
     @message.conversation = @conversation
     if @message.save
+      @conversation.touch
       flash[:success] = "msg sent"
       redirect_to user_path(params[:user_id])
     else

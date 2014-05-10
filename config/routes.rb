@@ -21,7 +21,8 @@ ArtSocnet::Application.routes.draw do
     resources :messages, only: [:index, :show, :new, :create]
     resources :conversations, only: [:index, :show]
   end
-    
+
+  resources :conversations, only: [:show]
   resources :showman_types,     only: [:edit, :update]
   resources :restaurants,       only: [:edit, :update]
   resources :restaurant_types,  only: [:edit, :update]

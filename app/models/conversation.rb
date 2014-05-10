@@ -23,13 +23,18 @@ class Conversation < ActiveRecord::Base
   end
 
   def self.all_conversations_for(user)
-    Conversation.where("user1_id = ? OR user2_id = ?", user, user)
+    Conversation.where("user1_id = ? OR user2_id = ?", user, user).order("updated_at DESC")
   end
 
   # return user object. Maybe return just id?
   # something stupidly wrong
   def get_other_recipient(current_user)
-    if self.user1 == current_user ? self.user1 : self.user2; end
+    # if self.user1 == current_user ? self.user1 : self.user2; end
+    if self.user1 == current_user
+      self.user2
+    else
+      self.user1
+    end
   end
 
 end
