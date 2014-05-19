@@ -1,4 +1,6 @@
 /* mixins, variable, etc */
+@import "compass";
+
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
 @mixin box_sizing {
@@ -59,6 +61,7 @@ p {
 }
 
 #logo {
+    @include transition;
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -68,8 +71,10 @@ p {
   padding-top: 9px;
   line-height: 1;
   &:hover {
+//      @include single-box-shadow;
     color: #ffb51d;
     text-decoration: none;
+      
   }
 
 }
