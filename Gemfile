@@ -24,7 +24,8 @@ gem 'omniauth-github'
 gem 'paperclip'
 gem 'cocaine'
 # gem 'compass-rails', '1.1.7' # its not working...
-gem 'compass-rails', github: 'Compass/compass-rails', branch: 'master'
+# gem 'compass-rails', github: 'Compass/compass-rails', branch: 'master'
+gem 'bourbon'
 # gem 'composite_primary_keys'
 #em "blueimp-gallery-rails", "~> 2.7.0"
 #gem 'gcal-ruby'
