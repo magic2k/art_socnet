@@ -1,0 +1,58 @@
+<header class="navigation">
+  <div class="menu-wrapper">
+    <a href="javascript:void(0)" class="logo">
+      <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_1.png" alt="">
+    </a>
+    <p class="navigation-menu-button" id="js-mobile-menu">MENU</p>
+    <div class="nav">
+      <ul id="navigation-menu">
+        <li class="nav-link"><%= link_to 'Главная', root_path %></li>
+        <li class="nav-link"><a href="javascript:void(0)">Сообщества</a></li>
+        <li class="nav-link"><%= link_to 'Помощь', help_path %></li>
+        <li class="nav-link"><a href="javascript:void(0)">Сервис</a></li>
+        <!--<li class="nav-link more"><a href="javascript:void(0)">Че то еще</a>-->
+          <!--<ul class="submenu">-->
+            <!--<li><a href="javascript:void(0)">Submenu Item</a></li>-->
+            <!--<li><a href="javascript:void(0)">Another Item</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+      </ul>
+    </div>
+    <div class="navigation-tools">
+      <div class="search-bar">
+        <div class="search-and-submit">
+          <input type="search" placeholder="поиск" />
+          <button type="submit">
+            <img src="https://raw.githubusercontent.com/Magnus-G/Random/master/search-icon.png" alt="">
+          </button>
+        </div>
+      </div>
+      <% if user_signed_in? %>
+          <ul id="navigation-menu">
+          <li class="nav-link more"><a href="javascript:void(0)">Здравствуйте, <%= current_user.firstname %></a>
+            <ul class="submenu">
+              <li>
+                <%= link_to user_path(current_user) do %>
+                    <%= image_tag 'glyphicons_free/glyphicons/png/glyphicons_020_home.png' %> <mnu-txt>Моя страница</mnu-txt>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_user_path(current_user) do %>
+                  <%= image_tag 'glyphicons_free/glyphicons/png/glyphicons_439_wrench.png' %> <mnu-txt>Настройки</mnu-txt>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <%= image_tag 'glyphicons_free/glyphicons/png/glyphicons_063_power.png' %> Выйти
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          </ul>
+      <% else %>
+          <%= link_to 'Регистрация', signup_path, class: 'reg-btn' %>
+          <%= link_to 'Войдите', new_user_session_path, class: 'sign-up' %>
+      <% end %>
+    </div>
+  </div>
+</header>

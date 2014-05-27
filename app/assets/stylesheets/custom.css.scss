@@ -1,5 +1,4 @@
 /* mixins, variable, etc */
-@import "compass";
 
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
@@ -61,7 +60,6 @@ p {
 }
 
 #logo {
-    @include transition;
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -71,6 +69,7 @@ p {
   padding-top: 9px;
   line-height: 1;
   &:hover {
+    @include transition(all 0.7s ease-in-out);
 //      @include single-box-shadow;
     color: #ffb51d;
     text-decoration: none;
