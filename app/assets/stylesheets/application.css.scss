@@ -23,3 +23,7 @@
 @import "blueimp-gallery-video";
 @import "conversations";
 //TODO: add TypePlate later
+
+.container {
+  @include outer-container;
+}
