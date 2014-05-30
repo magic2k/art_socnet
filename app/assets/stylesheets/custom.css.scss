@@ -1,5 +1,5 @@
 /* mixins, variable, etc */
-@import "compass";
+//@import "compass";
 
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
@@ -61,7 +61,7 @@ p {
 }
 
 #logo {
-    @include transition;
+//    @include transition;
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
