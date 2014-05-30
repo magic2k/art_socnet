@@ -5,35 +5,11 @@
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
  */
-
-//@import "compass";
-@import "bootstrap";
-
-//input[type="text"],
-//input[type="password"],
-//input[type="datetime"],
-//input[type="datetime-local"],
-//input[type="date"],
-//input[type="month"],
-//input[type="time"],
-//input[type="week"],
-//input[type="number"],
-//input[type="email"],
-//input[type="url"],
-//input[type="search"],
-//input[type="tel"],
-//input[type="color"] {
-//  @extend .form-control;
-//  height: auto;
-//  margin: 10px 0 10px 0;
-//}
-
-.nowrap {
-  white-space: nowrap;
-}

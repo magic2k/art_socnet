@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 #gem 'rails', '~> 4.0.0'
 gem 'rails'
 gem 'sqlite3'
-#gem 'sass-rails', '~> 4.0.0'
+# gem 'sass-rails', '~> 4.0.0'
 gem 'sass-rails'
 gem 'uglifier'
 #gem 'coffee-rails', '~> 4.0.'
@@ -15,8 +15,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'bootstrap-sass'
-gem 'bootstrap-will_paginate'
+# gem 'bootstrap-sass'
+# gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'devise'
 gem 'omniauth-github'
@@ -24,10 +24,15 @@ gem 'omniauth-github'
 gem 'paperclip'
 gem 'cocaine'
 # gem 'compass-rails', '1.1.7' # its not working...
-gem 'compass-rails', github: 'Compass/compass-rails', branch: 'master'
+# gem 'compass-rails', github: 'Compass/compass-rails', branch: 'master'
 # gem 'composite_primary_keys'
 #em "blueimp-gallery-rails", "~> 2.7.0"
 #gem 'gcal-ruby'
+gem 'foundation-rails'
+
+group :development do
+  gem 'rails_layout'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
