@@ -1,1 +1,16 @@
 <%# add navigation links to this file %>
+<li class="name"><%= link_to 'Помощь', help_path %></li>
+<li class="name"><%= link_to 'Контакты', help_path %></li>
+<% if user_signed_in? %>
+  <!--TODO: dropdown menu button with iconz! -->
+  <li class="has-dropdown"><%= link_to "Здравствуйте, #{current_user.firstname}", '#' %>
+    <ul class="dropdown">
+     <li><%= link_to 'Моя страница', current_user %></li>
+     <li><%= link_to 'Настройки', edit_user_path(current_user) %></li>
+     <li><%= link_to 'Выйти', destroy_user_session_path %></li>
+    </ul>
+  </li>
+<% else %>
+  <li class="name"><%= link_to 'Войдите', new_user_session_path %></li>
+  <li class="name"><%= link_to 'Регистрация', signup_path %></li>
+<% end %>

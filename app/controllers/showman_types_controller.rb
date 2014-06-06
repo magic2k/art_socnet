@@ -22,4 +22,4 @@ class ShowmanTypesController < ApplicationController
   def showman_params
     params.require(:showman_type).permit(:emcee, :dj, :bartender, :illusionist, :tamada)
   end
-end
+end 
