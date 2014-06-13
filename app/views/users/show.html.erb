@@ -2,23 +2,23 @@
 <!-- TODO: make partials there -->
 <h1> <%= @user.usr_type %></h1>
 <% if @user != @current_user %>
-  <%= link_to('Отправить сообщение', new_user_message_path(@user)) %>
+    <%= link_to('Отправить сообщение', new_user_message_path(@user)) %>
 <% end %>
 
 <% if @user == current_user %>
     <%= link_to('Мои сообщения', user_conversations_path(@user)) %>
-<%end  %>
+<% end %>
 
 <% if @user.usr_type == 'guest' %>
 
     <div class="row">
-      <aside class="col-md-4">
+      <div class="large-4 columns">
         <section>
           <h1>
             <%= render 'users/partials/avatar' %>
           </h1>
         </section>
-      </aside>
+      </div>
     </div>
 
     <div class="row">
@@ -36,23 +36,34 @@
 <% elsif @user.usr_type == 'showman' %>
 
     <div class="row">
-      <%= @user.firstname + ' ' + @user.lastname %>
-    </div>
-
-    <div class="row">
-      <%= render 'users/partials/avatar' %>
-      <%= render 'users/partials/user_address' %>
-      <%= render 'users/partials/contacts' %>
-    </div>
-
-    <div class="row">
-      <!--TODO: process it through l18n -->
-      Навыки:
+      <h2><%= @user.firstname + ' ' + @user.lastname %></h2>
       <% if @showman_types %>
           <% @showman_types.each do |t| %>
-              <%= t %>
+              <h3><%= t %></h3>
           <% end %>
       <% end %>
+    </div>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <%= render 'users/partials/avatar' %>
+      </div>
+      <div class="small-2 columns">
+        <%= render 'users/partials/user_address' %>
+        <%= render 'users/partials/contacts' %>
+        <!--TODO: process it through l18n -->
+        <% if @showman_types %>
+            <% @showman_types.each do |t| %>
+                <%= t %>
+            <% end %>
+        <% end %>
+      </div>
+      <div class="small-4 columns">
+        </div>
+    </div>
+
+    <div class="row">
+
     </div>
 
     <div class="row">
@@ -70,7 +81,7 @@
     <!--TODO: maybe show only 8-10 images and do randomization?-->
     <div id="links">
       <% @all_images.each do |img| %>
-        <%= link_to image_tag(img.image.url(:thumb)), img.image.url  %>
+          <%= link_to image_tag(img.image.url(:thumb)), img.image.url %>
       <% end %>
     </div>
 
