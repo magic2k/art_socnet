@@ -6,6 +6,7 @@ class ImagesController < ApplicationController
   #  @image = Image.new
   #end
 
+  # TODO: add js in  to check if image param is empty
   def create
     @album = Album.find(params[:album_id])
     @user = User.find(@album.user_id)
@@ -13,7 +14,8 @@ class ImagesController < ApplicationController
     @image.album_id = @album.id
     if @image.save
       flash[:success] = 'Фотография добавлена'
-      redirect_to user_albums_path(@user.id)
+      # redirect_to user_albums_path(@user.id)
+      redirect_to edit_image_path(@album.id)
     else
       flash.now[:danger] = 'Не удалось сохранить изображение'
       render 'edit'
@@ -33,6 +35,7 @@ class ImagesController < ApplicationController
     if @image.save
       flash[:success] = "Фотография добавлена"
       redirect_to user_albums_path
+      # redirect_to edit_image_path
     end
     flash.now[:danger] = "Не удалось сохранить изображение"
     render 'edit'

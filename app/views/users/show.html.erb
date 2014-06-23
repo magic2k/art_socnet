@@ -1,25 +1,18 @@
 <% provide(:title, @user.firstname) %>
 <!-- TODO: make partials there -->
-<h1> <%= @user.usr_type %></h1>
-<% if @user != @current_user %>
-    <%= link_to('Отправить сообщение', new_user_message_path(@user)) %>
-<% end %>
-
-<% if @user == current_user %>
-    <%= link_to('Мои сообщения', user_conversations_path(@user)) %>
-<% end %>
+<!--<h1> <%= @user.usr_type %></h1>-->
 
 <% if @user.usr_type == 'guest' %>
 
-    <div class="row">
-      <div class="large-4 columns">
-        <section>
-          <h1>
-            <%= render 'users/partials/avatar' %>
-          </h1>
-        </section>
-      </div>
-    </div>
+    <!--<div class="row">-->
+    <!--<div class="large-4 columns">-->
+    <section>
+      <!--<h1>-->
+      <%= render 'users/partials/avatar' %>
+      <!--</h1>-->
+    </section>
+    <!--</div>-->
+    <!--</div>-->
 
     <div class="row">
       <%= @user.firstname + ' ' + @user.lastname %>
@@ -35,20 +28,32 @@
     <!-- __________________________________________________________________ -->
 <% elsif @user.usr_type == 'showman' %>
 
-    <div class="row">
-      <h2><%= @user.firstname + ' ' + @user.lastname %></h2>
-      <% if @showman_types %>
-          <% @showman_types.each do |t| %>
-              <h3><%= t %></h3>
-          <% end %>
-      <% end %>
+    <div class="row name-header">
+      <%= @user.firstname + ' ' + @user.lastname %>
     </div>
 
     <div class="row">
-      <div class="small-6 columns">
+      <div class="small-5 columns usr-avatar first-col">
         <%= render 'users/partials/avatar' %>
+        <!--</div>-->
+        <% if @user != @current_user %>
+            <%= link_to('Отправить сообщение', new_user_message_path(@user)) %>
+        <% end %>
+
+        <% if @user == current_user %>
+            <%= link_to('Мои сообщения', user_conversations_path(@user)) %>
+        <% end %>
       </div>
-      <div class="small-2 columns">
+
+      <div class="small-7 columns usr-data last-col">
+        услуги:
+        <% if @showman_types %>
+            <% @showman_types.each do |t| %>
+                <%= t %>
+            <% end %>
+        <% end %>
+
+        <!--<div class="small-2 columns">-->
         <%= render 'users/partials/user_address' %>
         <%= render 'users/partials/contacts' %>
         <!--TODO: process it through l18n -->
@@ -57,15 +62,9 @@
                 <%= t %>
             <% end %>
         <% end %>
+        <!--</div>-->
       </div>
-      <div class="small-4 columns">
-        </div>
     </div>
-
-    <div class="row">
-
-    </div>
-
     <div class="row">
       <div id="blueimp-gallery" class="blueimp-gallery">
         <div class="slides"></div>

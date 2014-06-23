@@ -40,7 +40,7 @@
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
-  @include twelve-columns;
+//  @include twelve-columns;
   background-color: #eee;
   }
 section {
@@ -66,15 +66,7 @@ section {
 .authform form p {
   font-size: rem-calc(13);
 }
-.authform .form-group {
-  // for Bootstrap, not used for Foundation
-}
-.authform .form-control {
-  // for Bootstrap, not used for Foundation
-}
-.authform .checkbox {
-  // for Bootstrap, not used for Foundation
-}
+
 .authform fieldset {
   @include panel();
 }

@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Art Socnet" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Art Socnet" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%# Modernizr is required for Zurb Foundation %>
-    <%= javascript_include_tag 'vendor/modernizr' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    #bebebe
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
-  </body>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Art Socnet" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Art Socnet" %>">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%# Modernizr is required for Zurb Foundation %>
+  <%= javascript_include_tag 'vendor/modernizr' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <%= render 'layouts/navigation' %>
+</header>
+
+<div class="row">
+  <div class="small-2 columns first-col"> .</div>
+  <!--<div class="small-1 columns last-col">second 1</div>-->
+  <div class="small-9 columns cntr-col">
+
+    <!--<div class="small-2 columns">-->
+    <!--</div>-->
+
+    <%# render 'layouts/messages' %>
+    <%= yield %>
+    <!--</div>-->
+    <div class="small-1 columns last-col"> last column</div>
+
+  </div>
+  <!--desbug info-->
+  <%= debug(params) if Rails.env.development? %>
+</div>
+</body>
 </html>
 

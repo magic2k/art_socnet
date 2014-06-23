@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+.first-col {
+  background-color: #ffb51d;
+
+}
+.last-col {
+  background-color: #ff9313;
+}
+
+.cntr-col {
+  background-color: #e8eaff;
+}
+
+body {
+  background-color: #E9EAED;
+}
+
+.name-header {
+  background-color: #c7cfe1;
+  color: #ff6b0e;
+  font-size: 38px;
+  padding-left: 30px;
+}
+
+.usr-avatar, .usr-data {
+  padding-top: 20px;
+}
