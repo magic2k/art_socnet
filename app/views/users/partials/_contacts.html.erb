@@ -1,6 +1,8 @@
 Contacts:
-<%= @user.phone %>
-<%= @user.vkontakte %>
-<%= @user.twitter %>
-<%= @user.odkl %>
-<%= @user.skype %>
+<ul>
+  <li>Phone: <%= @user.phone %>
+  <li>Vkontakte: <%= link_to @user.vkontakte, "http://" + @user.vkontakte %>
+  <li><%= @user.twitter %>
+  <li><%= @user.odkl %>
+  <li><%= @user.skype %>
+</ul>

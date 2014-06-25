@@ -43,49 +43,55 @@
         <% if @user == current_user %>
             <%= link_to('Мои сообщения', user_conversations_path(@user)) %>
         <% end %>
+        <hr> </hr>
+
+
+        <div class="info">
+          <!--<div class="small-2 columns">-->
+          <%= render 'users/partials/user_address' %>
+          <hr> </hr>
+            <%= render 'users/partials/contacts' %>
+            <hr> </hr>
+
+          <!--TODO: process it through l18n -->
+          <% if @showman_types %>
+              услуги:
+              <ul>
+                <% @showman_types.each do |t| %>
+                    <li><%= t %></li>
+                <% end %>
+              </ul>
+          <% end %>
+          <!--</div>-->
+        </div>
+        <hr> </hr>
       </div>
 
       <div class="small-7 columns usr-data last-col">
-        услуги:
-        <% if @showman_types %>
-            <% @showman_types.each do |t| %>
-                <%= t %>
-            <% end %>
-        <% end %>
 
-        <!--<div class="small-2 columns">-->
-        <%= render 'users/partials/user_address' %>
-        <%= render 'users/partials/contacts' %>
-        <!--TODO: process it through l18n -->
-        <% if @showman_types %>
-            <% @showman_types.each do |t| %>
-                <%= t %>
-            <% end %>
-        <% end %>
-        <!--</div>-->
+        <div class="row">
+          <div id="blueimp-gallery" class="blueimp-gallery">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+          </div>
+        </div>
+
+        <!--TODO: maybe show only 8-10 images and do randomization?-->
+        <div id="links">
+          <% @all_images.each do |img| %>
+              <%= link_to image_tag(img.image.url(:thumb)), img.image.url %>
+          <% end %>
+        </div>
+
+        <div class="row">
+          <%= link_to 'Альбомы', user_albums_path(@user.id) %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div id="blueimp-gallery" class="blueimp-gallery">
-        <div class="slides"></div>
-        <h3 class="title"></h3>
-        <a class="prev">‹</a>
-        <a class="next">›</a>
-        <a class="close">×</a>
-        <a class="play-pause"></a>
-        <ol class="indicator"></ol>
-      </div>
-    </div>
-
-    <!--TODO: maybe show only 8-10 images and do randomization?-->
-    <div id="links">
-      <% @all_images.each do |img| %>
-          <%= link_to image_tag(img.image.url(:thumb)), img.image.url %>
-      <% end %>
-    </div>
-
-    <div class="row">
-      <%= link_to 'Альбомы', user_albums_path(@user.id) %>
     </div>
 
     <!-- _______________________________________________________________________ -->
