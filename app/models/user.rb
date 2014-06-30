@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  #, :token_authenticatable
+  #, :token_authenticatable was deprecated. @see generate and ensure_authentication token
 
   has_attached_file :avatar, styles: {small: '300x300>', large: '600x600>',
                                       thumb: ['100x100>', :png]}, default_url: 'std_avatar.jpg'

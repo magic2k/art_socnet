@@ -14,16 +14,19 @@
  *= require_self
  */
 
+
 .first-col {
   background-color: #ffb51d;
-
+  float: left;
 }
 .last-col {
-  background-color: #ff9313;
+  background-color: #e1c937;
+  float: left;
 }
 
 .cntr-col {
   background-color: #e8eaff;
+  float: left;
 }
 
 body {
@@ -31,7 +34,7 @@ body {
 }
 
 .name-header {
-  background-color: #c7cfe1;
+  background-color: #1c2ae1;
   color: #ff6b0e;
   font-size: 38px;
   padding-left: 30px;
@@ -40,3 +43,12 @@ body {
 .usr-avatar, .usr-data {
   padding-top: 20px;
 }
+
+.info {
+  padding: 10px;
+  font: 17px Helvetica, Helvetica-Nue, Verdana, Arial;
+}
+
+//#podporka {
+//  clear: both;
+//}

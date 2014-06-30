@@ -34,14 +34,30 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #display user albums images
     @all_images = []
+    @random_images = []
+    @random_images2 = []
     @albums = @user.albums
-    #TODO: Todo todo todo todo todo tdo todoooooo
+
+    #random images from all albums
     if !(@albums.nil?)
+
       @albums.each do |album|
         album.images.each do |img|
           @all_images << img
         end
       end
+
+      if @all_images.length > 9
+        @all_images.shuffle!.slice!(0..8).each do |a|
+          @random_images << a
+        end
+        @all_images[0..8].each do |e|
+          @random_images2 << e
+        end
+      else
+        @random_images = @all_images
+      end
+
     end
 
     if @user.usr_type == 'showman'
@@ -69,7 +85,8 @@ class UsersController < ApplicationController
             :country,
             :birthdate, #?
             :skype, :vkontakte, :odkl, :twitter,
-            :phone)
+            :phone,
+            :about)
     # :password, :password_confirmation,
     # :unconfirmed_email)
   end

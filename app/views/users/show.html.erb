@@ -35,7 +35,6 @@
     <div class="row">
       <div class="small-5 columns usr-avatar first-col">
         <%= render 'users/partials/avatar' %>
-        <!--</div>-->
         <% if @user != @current_user %>
             <%= link_to('Отправить сообщение', new_user_message_path(@user)) %>
         <% end %>
@@ -43,15 +42,17 @@
         <% if @user == current_user %>
             <%= link_to('Мои сообщения', user_conversations_path(@user)) %>
         <% end %>
-        <hr> </hr>
-
+        <hr>
+        </hr>
 
         <div class="info">
           <!--<div class="small-2 columns">-->
           <%= render 'users/partials/user_address' %>
-          <hr> </hr>
-            <%= render 'users/partials/contacts' %>
-            <hr> </hr>
+          <hr>
+          </hr>
+          <%= render 'users/partials/contacts' %>
+          <hr>
+          </hr>
 
           <!--TODO: process it through l18n -->
           <% if @showman_types %>
@@ -63,8 +64,12 @@
               </ul>
           <% end %>
           <!--</div>-->
+          <hr>
+          </hr>
+          Присоединился к нам <%= @user.created_at.strftime("%d-%m-%Y") %>
+          <hr>
+          </hr>
         </div>
-        <hr> </hr>
       </div>
 
       <div class="small-7 columns usr-data last-col">
@@ -81,15 +86,33 @@
           </div>
         </div>
 
-        <!--TODO: maybe show only 8-10 images and do randomization?-->
         <div id="links">
-          <% @all_images.each do |img| %>
+          <% @random_images.each do |img| %>
               <%= link_to image_tag(img.image.url(:thumb)), img.image.url %>
           <% end %>
         </div>
 
-        <div class="row">
-          <%= link_to 'Альбомы', user_albums_path(@user.id) %>
+        <div class="info">
+          <div class="row">
+            <%= link_to 'Посмотреть альбомы >>', user_albums_path(@user.id) %>
+          </div>
+          <hr>
+          </hr>
+
+          <div class="row">
+            <%= @user.about %>
+          </div>
+
+          <% unless @random_images2.empty? %>
+              <hr>
+              </hr>
+              <div id="links2">
+                <% @random_images2.each do |img| %>
+                    <%= link_to image_tag(img.image.url(:thumb)), img.image.url %>
+                <% end %>
+              </div>
+          <% end %>
+          <hr> </hr>
         </div>
       </div>
     </div>
@@ -113,10 +136,21 @@
 
 </div>
 
+
 <!-- <script src="/blueimp-gallery.min.js"></script> -->
 
 <script>
     document.getElementById('links').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = {index: link, event: event},
+                links = this.getElementsByTagName('a');
+        blueimp.Gallery(links, options);
+    };
+
+
+    document.getElementById('links2').onclick = function (event) {
         event = event || window.event;
         var target = event.target || event.srcElement,
                 link = target.src ? target.parentNode : target,

@@ -1,6 +1,7 @@
 <div class="row">
-  <div class="span6 offset3">
+  <div class="small-6 small-offset-4 columns">
     <h2>Тип аккаунта: </h2>
+    <br>
     <%= form_for(@user, url: after_signup_step_2_update_path) do |f| %>
 
         <%= f.label 'Гость' %>

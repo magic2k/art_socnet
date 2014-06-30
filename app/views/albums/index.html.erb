@@ -17,10 +17,13 @@
           <div class="row">
             <div class="col-md-4">
               <%= link_to(a.album_name, a) %>
-              <% if current_user == @user || current_user.admin? %>
-                  <%= link_to('Фотографии', edit_image_path(a), class: "small") %>
-                  <%= link_to('Изменить', edit_album_path(a), class: "small") %>
-                  <%= link_to('Удалить', a, method: :delete, data: {confirm: 'Точно удалить?'}, class: 'sm') %>
+              <!--is logged in?-->
+              <% unless current_user.nil? %>
+                  <% if current_user == @user || current_user.admin? %>
+                      <%= link_to('Фотографии', edit_image_path(a), class: "small") %>
+                      <%= link_to('Изменить', edit_album_path(a), class: "small") %>
+                      <%= link_to('Удалить', a, method: :delete, data: {confirm: 'Точно удалить?'}, class: 'sm') %>
+                  <% end %>
               <% end %>
             </div>
           </div>
